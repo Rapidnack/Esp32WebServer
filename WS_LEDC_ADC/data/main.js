@@ -21,21 +21,21 @@ body.show();
 var esp32 = new Client();
 await esp32.connect(location.hostname || '192.168.10.13');
 
-sliderChange = async function(spinner, chan, value) {
+async function sliderChange(spinner, chan, value) {
   var v = value / 2500.0 * 2.5;
   spinner.value = v;
 
   var duty = Math.round(v / 20.0 * 65536.0)
   await esp32.sendText(`ledcWrite ${chan} ${duty}`);
-};
+}
 
-spinnerChange = async function(slider, chan, value) {
+async function spinnerChange(slider, chan, value) {
   var v = Math.round(value / 2.5 * 2500.0);
   slider.value = v;
 
   var duty = Math.round(value / 20.0 * 65536.0)
   await esp32.sendText(`ledcWrite ${chan} ${duty}`);
-};
+}
 
 slider0.change = async function(value) {
   await sliderChange(spinner0, 0, value);
