@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="jquery.ui.touch-punch.min.js"></script>
+<script src="Chart.bundle.min.js"></script>
+<script src="wsclient.js"></script>
+<script src="main.js"></script>
+
+<style>
+  body {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  div {
+    margin: 5px 0;
+  }
+  label {
+    margin: 0 5px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
+
+</head>
+<body>
+
+<script>
+  var ua = navigator.userAgent;
+  if (ua.indexOf('iPhone') > 0
+   || ua.indexOf('iPod') > 0
+   || (ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0)
+   || (ua.indexOf('windows') > 0 && ua.indexOf('phone') > 0)
+   || (ua.indexOf('firefox') > 0 && ua.indexOf('mobile') > 0)) {
+    $('body').css('font-size', '250%');
+    Chart.defaults.global.defaultFontSize = 30;
+  } else {
+    $('body').css('font-size', '100%');
+    Chart.defaults.global.defaultFontSize = 16;
+  }
+
+  Chart.defaults.global.animation.duration = 0;
+
+  main();
+</script>
+
+</body>
+</html>
