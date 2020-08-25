@@ -46,15 +46,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
   }
 }
 
-void sendEventTXT(int8_t num, String str) {
-  if (num < 0) {
-    if (client2.connected()) {
-      client2.println(str);
-    }
-  } else {
-    webSocket2.sendTXT((uint8_t)num, str.c_str());
-  }
-}
 void broadcastEventTXT(String str) {
   webSocket2.broadcastTXT(str.c_str());
   if (client2.connected()) {
