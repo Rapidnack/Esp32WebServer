@@ -111,7 +111,7 @@ class Client {
 	コマンド文字列をサーバーに送信する。
 
 	Args:
-		command (str): '\n'で終端されたコマンド文字列。
+		command (str): コマンド文字列。
 		binary (bool): trueならバイナリモード。省略時はバイナリモード。
 	*/
 	async send(command, binary=true) {
@@ -138,7 +138,7 @@ class Client {
 	テキストモードでコマンド文字列をサーバーに送信する。
 
 	Args:
-		command (str): '\n'で終端されたコマンド文字列。
+		command (str): コマンド文字列。
 	*/
 	async sendText(command) {
 		await this.send(command, false);
@@ -148,11 +148,11 @@ class Client {
 	コマンド文字列をサーバーに送信し、受信した応答文字列を返す。
 
 	Args:
-		command (str): '\n'で終端されたコマンド文字列。
+		command (str): コマンド文字列。
 		binary (bool): trueならバイナリモード。省略時はバイナリモード。
 
 	Returns:
-		str: 受信した応答文字列（'\n'削除済み）。
+		str: 受信した応答文字列。
 	*/
 	async sendQuery(command, binary=true) {
 		if (this._stopFlag)
@@ -174,10 +174,10 @@ class Client {
 	テキストモードでコマンド文字列をサーバーに送信し、受信した応答文字列を返す。
 
 	Args:
-		command (str): '\n'で終端されたコマンド文字列。
+		command (str): コマンド文字列。
 
 	Returns:
-		str: 受信した応答文字列（'\n'削除済み）。
+		str: 受信した応答文字列。
 	*/
 	async sendQueryText(command) {
 		return await this.sendQuery(command, false);
