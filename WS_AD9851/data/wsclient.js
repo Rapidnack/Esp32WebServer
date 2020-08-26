@@ -21,7 +21,7 @@ WebSocketサーバーに接続するクライアントモジュール
 
 
 /*
-指定した秒数後次の処理に進む。
+指定した秒数後、次の処理に進む。
 */
 async function sleep(sec) {
 	return new Promise(function(resolve) {
@@ -1100,7 +1100,8 @@ class LineChart {
 	/*
 	グラフに１サンプルのデータを追加する。
 
-	X軸の値は現在時刻、トレース分のY軸データのリスト[yA, yB, yC, yD, ...]を渡す。
+	X軸の値は現在時刻になる。
+	複数トレースのときは、トレース分のY軸データのリスト[yA, yB, yC, yD, ...]を渡す。
 	*/
 	push(values) {
 		if (this._chart.data.labels.length > this._rollPoints) {

@@ -21,6 +21,7 @@ button1.click = async function() {
   button1.disable();
 
   await esp32.sendText('pinMode 2 OUTPUT');
+
   stopFlag12 = false;
   while (!stopFlag12) {
     await esp32.sendText('digitalWrite 2 HIGH');
