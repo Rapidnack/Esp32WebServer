@@ -5,9 +5,16 @@
 #include "ESPAsyncWebServer.h"
 #include <WebSocketsServer.h>
 
-void mySetup();
-void myLoop();
-String process(int8_t num, String str);
+const char* ssid = "--ssid--"; // 要変更
+const char* password = "--password--"; // 要変更
+const int socketPort = 54001;
+const int socketPort2 = 54002;
+const int webSocketPort = 54011;
+const int webSocketPort2 = 54012;
+
+void mySetup(); // このスケッチ固有のsetup()
+void myLoop(); // このスケッチ固有のloop()
+String process(int8_t num, String str); // 受信したメッセージを処理
 
 SSD1306Wire display(0x3c, 21, 22);
 String displayBuffer[4];
@@ -21,15 +28,11 @@ void updateDisplay() {
   display.display();
 }
 
-const int socketPort = 54001;
-const int socketPort2 = 54002;
 WiFiServer server(socketPort);
 WiFiServer server2(socketPort2);
 WiFiClient client;
 WiFiClient client2;
 
-const int webSocketPort = 54011;
-const int webSocketPort2 = 54012;
 WebSocketsServer webSocket = WebSocketsServer(webSocketPort);
 WebSocketsServer webSocket2 = WebSocketsServer(webSocketPort2);
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) {
@@ -65,7 +68,7 @@ void setup() {
 
   // アクセスポイントに接続
   Serial.println("Connecting");
-  WiFi.begin("--ssid--", "--password--");
+  WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
